@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import SubButton from './components/SubButton'
 import Card from './components/Card'
