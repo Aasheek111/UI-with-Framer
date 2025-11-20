@@ -10,7 +10,11 @@ function Hooks() {
 
   return (
     <div ref={scope} className="  h-screen w-full bg-amber-400 flex justify-center items-center">
-      <div className="useanimate  opacity-0 h-50 w-50 bg-black rounded-4xl text-4xl "></div>
+      <div className="useanimate  opacity-0 h-50 w-50 bg-black rounded-4xl text-4xl ">
+
+
+        HEllo
+      </div>
     </div>
   );
 }
