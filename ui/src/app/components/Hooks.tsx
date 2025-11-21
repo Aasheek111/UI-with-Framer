@@ -28,7 +28,7 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
     }
   );
   const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 0]);
-  const blur = useTransform(scrollYProgress, [0.5, 1], [0, 1]);
+  const blur = useTransform(scrollYProgress, [0.6, 1], [0, 5]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.2, 0.8]);
 
   return (
@@ -54,12 +54,16 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
           y: translate,
           opacity: opacity,
         }}
+        whileHover={{
+          scale: 1.1,
+          transition: { duration: 0.1 },
+        }}
       >
         <Image
           src={feature.image}
           alt="pic"
           height={500}
-          className="w-100"
+          className="w-100 rounded-2xl"
           width={500}
         />
       </motion.div>
