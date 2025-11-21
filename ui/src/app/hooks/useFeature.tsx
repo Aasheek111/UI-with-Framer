@@ -17,7 +17,7 @@ function useFeature():Feature[] {
       description:
         "Built with smooth, optimized performance.Build previously complex effects, like magnetic cursors or infinite scrolling tickers, with Motion+ components. These next-level Motion APIs are built for maximum performance and customisation.",
       image:
-        "https://images.unsplash.com/photo-1581677996915-0bec0bb3a1a1?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmFzdCUyMGNvZGV8ZW58MHx8MHx8fDA%3D",
+        "https://images.unsplash.com/photo-1761839271800-f44070ff0eb9?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8",
     },
     {
       icon: <FaCode/>,
