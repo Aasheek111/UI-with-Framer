@@ -1,20 +1,23 @@
-'use client'
-import React from 'react'
-import SubButton from './components/SubButton'
-import Card from './components/Card'
-import Variant from './components/Variant'
-import Hooks from './components/Hooks'
+"use client";
+import React from "react";
+import SubButton from "./components/SubButton";
+import Card from "./components/Card";
+import Variant from "./components/Variant";
+import Hooks from "./components/Hooks";
+import LayoutUI from "./components/Layout";
 
 function page() {
   return (
-    <div className='bg-white'>
+    <div className="bg-white">
       {/* <SubButton/> */}
       {/* <Card/> */}
-      <Hooks/>
+      {/* <Hooks/> */}
+      {/* <Variant/> */}
+      <LayoutUI/>
 
-{/* <Variant/> */}
+
     </div>
-  )
+  );
 }
 
-export default page
+export default page;

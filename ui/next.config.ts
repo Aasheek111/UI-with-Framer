@@ -6,6 +6,12 @@ images:{
 
     {
       hostname :"images.unsplash.com"
+    },
+    {
+      hostname :"upload.wikimedia.org"
+    },
+    {
+     hostname: "picsum.photos" 
     }
   ]
 }
