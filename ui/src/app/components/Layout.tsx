@@ -1,6 +1,6 @@
-import { div } from "motion/react-client";
+import { button, div } from "motion/react-client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 
 function LayoutUI() {
   type Card = {
@@ -16,7 +16,7 @@ function LayoutUI() {
     {
       title: "Halo – Beyoncé",
       description: "A soaring pop ballad with emotional depth.",
-      ctaTitle: "Learn more",
+      ctaTitle: "Play",
       ctaLink: "https://en.wikipedia.org/wiki/Beyonc%C3%A9",
       imageSource: "https://picsum.photos/seed/beyonce/600/800",
       content: () => (
@@ -32,7 +32,7 @@ function LayoutUI() {
     {
       title: "Perfect – Ed Sheeran",
       description: "A romantic acoustic ballad loved globally.",
-      ctaTitle: "Learn more",
+      ctaTitle: "Play",
       ctaLink: "https://en.wikipedia.org/wiki/Ed_Sheeran",
       imageSource: "https://picsum.photos/seed/ed/600/800",
       content: () => (
@@ -45,86 +45,9 @@ function LayoutUI() {
     },
 
     {
-      title: "Lover – Taylor Swift",
-      description: "A dreamy pop love song full of warmth.",
-      ctaTitle: "Learn more",
-      ctaLink: "https://en.wikipedia.org/wiki/Taylor_Swift",
-      imageSource: "https://picsum.photos/seed/taylor/600/800",
-      content: () => (
-        <p>
-          “Lover” captures Taylor Swift’s signature narrative lyricism, painting
-          a picture of intimacy and emotional connection. The song blends retro
-          warmth with modern pop and stands out as one of her most heartfelt
-          tracks.
-        </p>
-      ),
-    },
-
-    {
-      title: "7 rings – Ariana Grande",
-      description: "A trap-pop anthem about confidence and luxury.",
-      ctaTitle: "Learn more",
-      ctaLink: "https://en.wikipedia.org/wiki/Ariana_Grande",
-      imageSource: "https://picsum.photos/seed/ariana/600/800",
-      content: () => (
-        <p>
-          “7 rings” merges hip-hop production with Ariana Grande’s pop vocals,
-          inspired by friendship, empowerment, and independence. Its catchy
-          melody, bold attitude, and luxurious aesthetic made it a global chart
-          topper.
-        </p>
-      ),
-    },
-
-    {
-      title: "Bad Guy – Billie Eilish",
-      description: "A quirky dark-pop hit with heavy bass.",
-      ctaTitle: "Learn more",
-      ctaLink: "https://en.wikipedia.org/wiki/Billie_Eilish",
-      imageSource: "https://picsum.photos/seed/billie/600/800",
-      content: () => (
-        <p>
-          “Bad Guy” exemplifies Billie Eilish’s experimental pop style with its
-          minimal production, whisper-like vocals, and bold lyrics. The song
-          broke conventions and became a cultural moment worldwide.
-        </p>
-      ),
-    },
-
-    {
-      title: "God’s Plan – Drake",
-      description: "A melodic hip-hop track with positive themes.",
-      ctaTitle: "Learn more",
-      ctaLink: "https://en.wikipedia.org/wiki/Drake_(musician)",
-      imageSource: "https://picsum.photos/seed/drake/600/800",
-      content: () => (
-        <p>
-          “God’s Plan” blends Drake’s signature emotional rap style with
-          uplifting themes about faith, success, and gratitude. Its music
-          video’s charitable donations made the song even more impactful.
-        </p>
-      ),
-    },
-
-    {
-      title: "Diamonds – Rihanna",
-      description: "A powerful vocal-driven pop anthem.",
-      ctaTitle: "Learn more",
-      ctaLink: "https://en.wikipedia.org/wiki/Rihanna",
-      imageSource: "https://picsum.photos/seed/rihanna/600/800",
-      content: () => (
-        <p>
-          “Diamonds” highlights Rihanna’s vocal richness over shimmering
-          production. Its uplifting message of shining bright through love and
-          confidence made it a global chart-topping classic.
-        </p>
-      ),
-    },
-
-    {
       title: "Uptown Funk – Bruno Mars",
       description: "A funky retro-inspired hit packed with energy.",
-      ctaTitle: "Learn more",
+      ctaTitle: "Play",
       ctaLink: "https://en.wikipedia.org/wiki/Bruno_Mars",
       imageSource: "https://picsum.photos/seed/bruno/600/800",
       content: () => (
@@ -139,7 +62,7 @@ function LayoutUI() {
     {
       title: "Hello – Adele",
       description: "A soulful piano ballad about reflection.",
-      ctaTitle: "Learn more",
+      ctaTitle: "Play",
       ctaLink: "https://en.wikipedia.org/wiki/Adele",
       imageSource: "https://picsum.photos/seed/adele/600/800",
       content: () => (
@@ -150,11 +73,26 @@ function LayoutUI() {
         </p>
       ),
     },
+    {
+      title: "Halo – Beyoncé",
+      description: "A soaring pop ballad with emotional depth.",
+      ctaTitle: "Play",
+      ctaLink: "https://en.wikipedia.org/wiki/Beyonc%C3%A9",
+      imageSource: "https://picsum.photos/seed/beyonce/600/800",
+      content: () => (
+        <p>
+          “Halo” showcases Beyoncé’s powerful vocals wrapped in lush production.
+          The song blends soft piano, airy atmosphere, and emotional themes of
+          love, redemption, and vulnerability. It remains one of her most iconic
+          ballads, celebrated worldwide.
+        </p>
+      ),
+    },
 
     {
       title: "Blinding Lights – The Weeknd",
       description: "A synthwave pop hit inspired by the 80s.",
-      ctaTitle: "Learn more",
+      ctaTitle: "Play",
       ctaLink: "https://en.wikipedia.org/wiki/The_Weeknd",
       imageSource: "https://picsum.photos/seed/weeknd/600/800",
       content: () => (
@@ -167,18 +105,85 @@ function LayoutUI() {
     },
   ];
 
+  const [current, setCurrent] = useState<Card | null>(null);
+  console.log(current);
+
   return (
-    <div>
-      {card.map((card, ind) => (
-        <div key={ind}>
+    <div className="py-10 min-h-screen  bg-neutral-300 px-10  justify-center flex flex-col items-center">
+      {current && (
+        <div className=" inset-0 h-full w-full fixed z-10 backdrop-blur-sm  bg-black/50"
+         onClick={() => setCurrent(null)}
+        ></div>
+      )}
+
+      {current && (
+        <div
+          className="flex fixed h-[90vh] w-sm  flex-col p-8 z-20 rounded-2xl bg-neutral-200"
+         
+        >
           <div>
-            
-            <Image src={card.imageSource} alt="img" height={500} width={500} />
+            <Image
+              src={current.imageSource}
+              alt="pic"
+              height={500}
+              width={500}
+              className="aspect-square overflow-hidden h-80 w-80 rounded-2xl"
+            />
           </div>
 
-          <div></div>
+          <div className="flex justify-between my-5 ">
+            <div>
+              <h2 className="h-2xl text-black font-bold text-lg">
+                {current.title}
+              </h2>
+
+              <p className="text-neutral-500">{current.description}</p>
+            </div>
+
+            <button className=" bg-green-600 p-2 h-10 rounded-xl items-right cursor-pointer ">
+              {current.ctaTitle}
+            </button>
+          </div>
+
+          <div>
+            <div className="text-neutral-600 text-xs">{current.content()}</div>
+          </div>
         </div>
-      ))}
+      )}
+      <div className="min-w-xl mx-auto ">
+        {card.map((card, ind) => (
+          <div
+            onClick={() => setCurrent(card)}
+            key={ind}
+            className="flex  gap-4  my-5 rounded-2xl p-2 cursor-pointer items-center border shadow bg-neutral-200 shadow-neutral-400 "
+          >
+            <div className="h-20 w-25 overflow-hidden aspect-square rounded-xl ">
+              <Image
+                src={card.imageSource}
+                alt="img"
+                height={500}
+                width={500}
+                className="  "
+              />
+            </div>
+
+            <div className="flex justify-between w-full">
+              <div>
+                <h2 className="h-2xl text-black font-bold text-lg">
+                  {card.title}
+                </h2>
+                <p className="text-neutral-600 text-xs">{card.description}</p>
+              </div>
+
+              <div>
+                <button className=" bg-green-600 p-2 rounded-xl items-right cursor-pointer ">
+                  {card.ctaTitle}
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
