@@ -1,5 +1,6 @@
 import { button, div } from "motion/react-client";
 import Image from "next/image";
+import { motion } from "motion/react";
 import React, { useState } from "react";
 
 function LayoutUI() {
@@ -13,22 +14,6 @@ function LayoutUI() {
   };
 
   const card: Card[] = [
-    {
-      title: "Halo – Beyoncé",
-      description: "A soaring pop ballad with emotional depth.",
-      ctaTitle: "Play",
-      ctaLink: "https://en.wikipedia.org/wiki/Beyonc%C3%A9",
-      imageSource: "https://picsum.photos/seed/beyonce/600/800",
-      content: () => (
-        <p>
-          “Halo” showcases Beyoncé’s powerful vocals wrapped in lush production.
-          The song blends soft piano, airy atmosphere, and emotional themes of
-          love, redemption, and vulnerability. It remains one of her most iconic
-          ballads, celebrated worldwide.
-        </p>
-      ),
-    },
-
     {
       title: "Perfect – Ed Sheeran",
       description: "A romantic acoustic ballad loved globally.",
@@ -109,7 +94,7 @@ function LayoutUI() {
   console.log(current);
 
   return (
-    <div className="py-10 min-h-screen  bg-neutral-300 px-10  justify-center flex flex-col items-center">
+    <div className="py-5 min-h-screen  bg-neutral-300 px-10  justify-center flex flex-col items-center">
       {current && (
         <div
           className=" inset-0 h-full w-full fixed z-10 backdrop-blur-sm  bg-black/50"
@@ -118,9 +103,13 @@ function LayoutUI() {
       )}
 
       {current && (
-        <div className="flex fixed h-[90vh] w-sm  flex-col p-8 z-20 rounded-2xl bg-neutral-200">
+        <motion.div
+          className="flex fixed h-[90vh] w-sm  flex-col p-8 z-20 rounded-2xl bg-neutral-200"
+          layoutId={`card-title-${current.title}`}
+        >
           <div>
-            <Image
+            <motion.img
+              layoutId={`card-img-${current.title}`}
               src={current.imageSource}
               alt="pic"
               height={500}
@@ -131,11 +120,19 @@ function LayoutUI() {
 
           <div className="flex justify-between my-5 ">
             <div>
-              <h2 className="h-2xl text-black font-bold text-lg">
+              <motion.h2
+                className="h-2xl text-black font-bold text-lg"
+                layoutId={`card-text-${current.title}`}
+              >
                 {current.title}
-              </h2>
+              </motion.h2>
 
-              <p className="text-neutral-500">{current.description}</p>
+              <motion.p
+                className="text-neutral-500"
+                layoutId={`card-des-${current.title}`}
+              >
+                {current.description}
+              </motion.p>
             </div>
 
             <button className=" bg-green-600 p-2 h-10 rounded-xl items-right cursor-pointer ">
@@ -146,17 +143,19 @@ function LayoutUI() {
           <div>
             <div className="text-neutral-600 text-xs">{current.content()}</div>
           </div>
-        </div>
+        </motion.div>
       )}
       <div className="min-w-xl mx-auto ">
         {card.map((card, ind) => (
-          <div
+          <motion.div
             onClick={() => setCurrent(card)}
             key={ind}
-            className="flex  gap-4  my-5 rounded-2xl p-2 cursor-pointer items-center border shadow bg-neutral-200 shadow-neutral-400 "
+            layoutId={`card-title-${card.title}`}
+            className="flex  gap-4  my-5 rounded-2xl p-2 cursor-pointer items-center border shadow bg-neutral-200 shadow-neutral-400 hover:bg-neutral-300 "
           >
             <div className="h-20 w-25 overflow-hidden aspect-square rounded-xl ">
-              <Image
+              <motion.img
+                layoutId={`card-img-${card.title}`}
                 src={card.imageSource}
                 alt="img"
                 height={500}
@@ -165,12 +164,23 @@ function LayoutUI() {
               />
             </div>
 
-            <div className="flex justify-between w-full">
+            <motion.div
+              className="flex justify-between w-full"
+              layoutId={`card-text-${card.title}`}
+            >
               <div>
-                <h2 className="h-2xl text-black font-bold text-lg">
+                <motion.h2 className="h-2xl text-black font-bold text-lg"
+                  layoutId={`card-title-${card.title}`}
+                
+                >
                   {card.title}
-                </h2>
-                <p className="text-neutral-600 text-xs">{card.description}</p>
+                </motion.h2>
+                <motion.p
+                  className="text-neutral-600 text-xs"
+                  layoutId={`card-des-${card.title}`}
+                >
+                  {card.description}
+                </motion.p>
               </div>
 
               <div>
@@ -178,8 +188,8 @@ function LayoutUI() {
                   {card.ctaTitle}
                 </button>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         ))}
       </div>
     </div>
