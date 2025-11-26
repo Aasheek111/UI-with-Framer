@@ -25,6 +25,23 @@ function LayoutUI() {
           “Perfect” is Ed Sheeran’s modern romantic classic, written as a
           timeless love song. With soft acoustic melody and heartfelt lyrics, it
           has become a wedding staple and one of Sheeran’s biggest global hits.
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Autem, eum
+          similique? Laboriosam ratione earum recusandae sequi sed
+          necessitatibus sunt fuga, blanditiis odio nisi, aperiam assumenda
+          deserunt hic quidem libero. Molestiae quae corrupti quam nemo? Esse
+          veniam, excepturi repellat odio dolor ratione ullam dicta rerum
+          dolorem quia assumenda harum vero inventore. Lorem ipsum dolor, sit
+          amet consectetur adipisicing elit. Qui dicta sed rerum culpa ea harum
+          vel nisi nam ad eos repellendus provident, sit quas magnam maxime.
+          Pariatur repudiandae amet reprehenderit voluptas unde sed saepe vitae
+          assumenda laboriosam. Maxime, quo natus! Aperiam adipisci error enim
+          fuga amet asperiores facere officiis pariatur? Lorem ipsum dolor sit
+          amet consectetur adipisicing elit. Quibusdam accusamus sed cupiditate
+          sunt aliquid? Molestiae tenetur, nulla dolorum nam blanditiis maxime
+          iste exercitationem itaque! Soluta fugit a eum, autem veniam possimus
+          error iste consequatur velit optio quod! Quis optio adipisci aperiam
+          asperiores, commodi cupiditate minus earum. Officiis doloribus
+          molestias nisi.
         </p>
       ),
     },
@@ -94,7 +111,7 @@ function LayoutUI() {
   console.log(current);
 
   return (
-    <div className="py-5 min-h-screen  bg-neutral-300 px-10  justify-center flex flex-col items-center">
+    <div className="py-5 min-h-screen  bg-neutral-300 px-10  justify-center flex flex-col items-center pb-10  ">
       {current && (
         <div
           className=" inset-0 h-full w-full fixed z-10 backdrop-blur-sm  bg-black/50"
@@ -104,8 +121,8 @@ function LayoutUI() {
 
       {current && (
         <motion.div
-          className="flex fixed h-[90vh] w-sm  flex-col p-8 z-20 rounded-2xl bg-neutral-200"
-          layoutId={`card-title-${current.title}`}
+          className=" fixed h-[80vh] w-sm  flex-col p-8 z-20 rounded-2xl bg-neutral-200  "
+          layoutId={`card-main-${current.title}`}
         >
           <div>
             <motion.img
@@ -114,7 +131,7 @@ function LayoutUI() {
               alt="pic"
               height={500}
               width={500}
-              className="aspect-square overflow-hidden h-80 w-80 rounded-2xl"
+              className="aspect-square overflow-hidden  w-80 rounded-2xl"
             />
           </div>
 
@@ -122,7 +139,7 @@ function LayoutUI() {
             <div>
               <motion.h2
                 className="h-2xl text-black font-bold text-lg"
-                layoutId={`card-text-${current.title}`}
+                layoutId={`card-title-${current.title}`}
               >
                 {current.title}
               </motion.h2>
@@ -140,9 +157,14 @@ function LayoutUI() {
             </button>
           </div>
 
-          <div>
-            <div className="text-neutral-600 text-xs">{current.content()}</div>
-          </div>
+          <motion.div
+            className="text-neutral-600 text-xs h-30 w-full  overflow-y-auto mask-b-from-1  "
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ delay: 0.3 }}
+          >
+            {current.content()}
+          </motion.div>
         </motion.div>
       )}
       <div className="min-w-xl mx-auto ">
@@ -150,7 +172,7 @@ function LayoutUI() {
           <motion.div
             onClick={() => setCurrent(card)}
             key={ind}
-            layoutId={`card-title-${card.title}`}
+            layoutId={`card-main-${card.title}`}
             className="flex  gap-4  my-5 rounded-2xl p-2 cursor-pointer items-center border shadow bg-neutral-200 shadow-neutral-400 hover:bg-neutral-300 "
           >
             <div className="h-20 w-25 overflow-hidden aspect-square rounded-xl ">
@@ -164,14 +186,11 @@ function LayoutUI() {
               />
             </div>
 
-            <motion.div
-              className="flex justify-between w-full"
-              layoutId={`card-text-${card.title}`}
-            >
+            <div className="flex justify-between w-full">
               <div>
-                <motion.h2 className="h-2xl text-black font-bold text-lg"
+                <motion.h2
+                  className="h-2xl text-black font-bold text-lg"
                   layoutId={`card-title-${card.title}`}
-                
                 >
                   {card.title}
                 </motion.h2>
@@ -184,11 +203,11 @@ function LayoutUI() {
               </div>
 
               <div>
-                <button className=" bg-green-600 p-2 rounded-xl items-right cursor-pointer ">
+                <button className=" bg-green-600 p-2 rounded-xl items-right cursor-pointer  ">
                   {card.ctaTitle}
                 </button>
               </div>
-            </motion.div>
+            </div>
           </motion.div>
         ))}
       </div>
