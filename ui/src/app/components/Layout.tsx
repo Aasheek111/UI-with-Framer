@@ -111,16 +111,14 @@ function LayoutUI() {
   return (
     <div className="py-10 min-h-screen  bg-neutral-300 px-10  justify-center flex flex-col items-center">
       {current && (
-        <div className=" inset-0 h-full w-full fixed z-10 backdrop-blur-sm  bg-black/50"
-         onClick={() => setCurrent(null)}
+        <div
+          className=" inset-0 h-full w-full fixed z-10 backdrop-blur-sm  bg-black/50"
+          onClick={() => setCurrent(null)}
         ></div>
       )}
 
       {current && (
-        <div
-          className="flex fixed h-[90vh] w-sm  flex-col p-8 z-20 rounded-2xl bg-neutral-200"
-         
-        >
+        <div className="flex fixed h-[90vh] w-sm  flex-col p-8 z-20 rounded-2xl bg-neutral-200">
           <div>
             <Image
               src={current.imageSource}
