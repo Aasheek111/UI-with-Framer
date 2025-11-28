@@ -5,6 +5,7 @@ import Card from "./components/Card";
 import Variant from "./components/Variant";
 import Hooks from "./components/Hooks";
 import LayoutUI from "./components/Layout";
+import Navbar from "./components/Navbar";
 
 function page() {
   return (
@@ -13,8 +14,8 @@ function page() {
       {/* <Card/> */}
       {/* <Hooks/> */}
       {/* <Variant/> */}
-      <LayoutUI/>
-
+      {/* <LayoutUI/> */}
+<Navbar/>
 
     </div>
   );
