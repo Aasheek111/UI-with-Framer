@@ -6,6 +6,7 @@ import Variant from "./components/Variant";
 import Hooks from "./components/Hooks";
 import LayoutUI from "./components/Layout";
 import Navbar from "./components/Navbar";
+import AnimatedText from "./components/AnimatedText";
 
 function page() {
   return (
@@ -15,8 +16,9 @@ function page() {
       {/* <Hooks/> */}
       {/* <Variant/> */}
       {/* <LayoutUI/> */}
-<Navbar/>
+      <AnimatedText />
 
+      {/* <Navbar/> */}
     </div>
   );
 }
