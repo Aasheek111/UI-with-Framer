@@ -7,16 +7,19 @@ import Hooks from "./components/Hooks";
 import LayoutUI from "./components/Layout";
 import Navbar from "./components/Navbar";
 import AnimatedText from "./components/AnimatedText";
+import AnimationSequence from "./components/AnimationSequence";
 
 function page() {
   return (
-    <div className="bg-white">
+    <div className="">
       {/* <SubButton/> */}
       {/* <Card/> */}
       {/* <Hooks/> */}
       {/* <Variant/> */}
       {/* <LayoutUI/> */}
-      <AnimatedText />
+      {/* <AnimatedText /> */}
+      <AnimationSequence/>
+
 
       {/* <Navbar/> */}
     </div>
