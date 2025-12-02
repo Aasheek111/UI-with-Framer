@@ -61,7 +61,10 @@ function AnimationSequence() {
         onClick={() => startAnimating()}
         className=" h-20 rounded-lg bg-purple-700 relative text-white text-xl cursor-pointer  flex justify-center items-center"
       >
-        <motion.span>Purchase Now(135$)</motion.span>
+        <div className="absoulte inset-0">
+          <motion.span>Purchase Now(135$)</motion.span>
+        </div>
+
         <div className="tick absolute opacity-0 inset-0 p-1">
           <GrStatusGood className="p-1" size={70} />
         </div>
